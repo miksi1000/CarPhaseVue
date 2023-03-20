@@ -4,7 +4,9 @@
             <h5>Basic</h5>
             <Chart type="line" :data="basicData" :options="basicOptions" />
         </div>
+
     </div>
+    <div></div>
 </template>
 
 <script>
