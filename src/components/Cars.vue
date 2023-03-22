@@ -1,11 +1,10 @@
 <template>
     <div class="grid">
-      <div class="p-col-12 p-md-6 p-lg-3" v-for="car in cars" :key="car.id" style="margin-left: 10px">
+      <div class="p-col-12 p-md-6 p-lg-3" v-for="car in cars" :key="car.serialnumber" style="margin-left: 10px">
         
         <!-- <h3>{{ car.name }}</h3> -->
         <Car
-          @remove-car="$emit('remove-car', car.id)"
-          @add-favorite="$emit('add-favorite', car.id)"
+          @remove-car="$emit('remove-car', car.serialnumber)"
           :car="car"
         />
       </div>
@@ -19,7 +18,7 @@ export default {
         cars: Array
     },
     components: { Car },
-    emits: ["remove-car", "add-favorite"]
+    emits: ["remove-car"]
 };
 </script>
 

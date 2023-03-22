@@ -1,72 +1,78 @@
 <template>
   <Department/>
   <AddCar @add-car="addCar"  /> 
-  <Cars @remove-car="removeCar" @add-favorite="addFavorite" :cars="cars" />
+  <Cars @remove-car="removeCar"  :cars="cars" />
 </template>
 
 <script>
 import Cars from "../components/Cars"
 import AddCar from "../components/AddCar"
 import Department from "../components/Department"
+
 export default {
   name: 'HomeView',
   components: { Cars, AddCar, Department },
   methods: {
+    
+
     async addCar(car) {
-      const res = await fetch("http://127.0.0.1:8000/car/", {
+      const res = await fetch("http://127.0.0.1:8000/cars/", {
         method: "POST",
         headers: {
           "Content-type": "application/json"
         },
         body: JSON.stringify(car)
       })
-
-      const data = await res.json();
-      this.cars = [...this.cars, data]
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
     },
-    async removeCar(id) {
+    async removeCar(serialnumber) {
       if (confirm("Are you sure you want to remove this Car?")) {
         const res = await fetch(
-          `https://63f36704fe3b595e2ee11976.mockapi.io/cars/${id}`,
+          `http://127.0.0.1:8000/cars/${serialnumber}/`,
           {
             method: "DELETE",
           }
         );
-
-        res.status === 200
-          ? (this.cars = this.cars.filter((car) => car.id !== id))
+        res.status === 204
+          ? (this.cars = this.cars.filter((car) => car.serialnumber !== serialnumber))
           : alert("Delete failed!");
       }
     },
-    async addFavorite(id) {
-      const addFavorite = await this.fetchCar(id);
-      const updatedFavorite = {
-        ...addFavorite,
-        isFavorite: !addFavorite.isFavorite,
-      };
-      const res = await fetch(
-        `https://63f36704fe3b595e2ee11976.mockapi.io/cars/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(updatedFavorite),
-        }
-      );
-      const data = await res.json();
+    // async addFavorite(id) {
+    //   const addFavorite = await this.fetchCar(id);
+    //   const updatedFavorite = {
+    //     ...addFavorite,
+    //     isFavorite: !addFavorite.isFavorite,
+    //   };
+    //   const res = await fetch(
+    //     `https://63f36704fe3b595e2ee11976.mockapi.io/cars/${id}`,
+    //     {
+    //       method: "PUT",
+    //       headers: {
+    //         "Content-type": "application/json",
+    //       },
+    //       body: JSON.stringify(updatedFavorite),
+    //     }
+    //   );
+    //   const data = await res.json();
 
-      this.cars = this.cars.map((car) =>
-        car.id === id ? { ...car, isFavorite: data.isFavorite } : car
-      );
-    },
+    //   this.cars = this.cars.map((car) =>
+    //     car.id === id ? { ...car, isFavorite: data.isFavorite } : car
+    //   );
+    // },
     async fetchCars(){
-      const res = await fetch("http://127.0.0.1:8000/car/")
+      const res = await fetch("http://127.0.0.1:8000/cars/")
       const data = await res.json();
       return data
     },
-    async fetchCar(id){
-      const res = await fetch(`https://63f36704fe3b595e2ee11976.mockapi.io/cars/${id}`)
+    async fetchCar(serialnumber){
+      const res = await fetch(`http://127.0.0.1:8000/cars/${serialnumber}`)
       const data = await res.json();
       return data
     },

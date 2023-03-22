@@ -7,6 +7,7 @@
         </template>
         <template #title>
           {{ car.name }}
+          <div>{{ car.department_address }}</div>
         </template>
         <template #subtitle> registreringsnummer: {{ car.serialnumber }} </template>
         <!-- <template #content>
@@ -19,20 +20,11 @@
         </template> -->
         <template #footer>
           <Button
-            @click="onRemove(car.id)"
+            @click="onRemove(car.serialnumber)"
             icon="pi pi-times"
             label="Remove"
             class="p-button-danger"
             style="margin-right: 4em"
-          />
-          <Button
-            @click="$emit('add-favorite', car.id)"
-            icon="pi pi-heart"
-            :class="[
-              car.isFavorite ? '' : 'p-button-outlined',
-              'p-button-rounded',
-              'p-button-danger',
-            ]"
           />
         </template>
       </Card>
@@ -45,9 +37,9 @@ export default {
         car: Object,
     },
     methods: {
-        onRemove(id){
-        //    console.log("clicked!", id);
-           this.$emit("remove-car", id);
+        onRemove(serialnumber){
+          //  console.log("clicked!", serialnumber);
+           this.$emit("remove-car", serialnumber);
         }
 
     }

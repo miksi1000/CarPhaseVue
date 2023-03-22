@@ -15,21 +15,21 @@
         </div> -->
         <div class="field">
             <label for="phasestart" class="p-sr-only">phasestart</label>
-            <input v-model="phasestart" id="phasestart" type="date" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Phase Start">
+            <input v-model="phasestart" id="phasestart" type="datetime-local" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Phase Start">
         </div>
         <div class="field">
             <label for="Platenumber" class="p-sr-only">platenumber</label>
             <input v-model="platenumber" id="platenumber" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Plate number">
         </div>
         <div class="field">
-            <label for="phasename" class="p-sr-only">phasename</label>
-            <input v-model="phasename" id="phasename" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Phase name">
+            <label for="phase_name" class="p-sr-only">phasename</label>
+            <input v-model="phase_name" id="phasename" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Phase name">
         </div>
         <div class="field">
-            <label for="departmentaddress" class="p-sr-only">departmentaddress</label>
-            <input v-model="departmentaddress" id="departmentaddress" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Department address">
+            <label for="department_address" class="p-sr-only">departmentaddress</label>
+            <input v-model="department_address" id="departmentaddress" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary" placeholder="Department address">
         </div>
-        <button v-tooltip.right="'Tryk for at gemme'" type="submit" class="text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700">Save</button>
+        <button type="submit" class="text-white bg-primary-500 border-primary-500 px-3 py-2 text-base border-1 border-solid border-round cursor-pointer transition-all transition-duration-200 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700">Save</button>
         
     </form>
     
@@ -45,9 +45,8 @@
                 serialnumber: "",
                 phasestart: "",
                 platenumber: "",
-                phasename: "",
-                departmentaddress: "",
-                isFavorite: false,
+                phase_name: "",
+                department_address: "",
             }
         },
         emits: ["add-car"],
@@ -61,8 +60,8 @@
                     serialnumber: this.serialnumber,
                     phasestart: this.phasestart,
                     platenumber: this.platenumber,
-                    phasename: this.phasename,
-                    departmentadress: this.departmentaddress,
+                    phase_name: this.phase_name,
+                    department_address: this.department_address,
                     // isFavorite: false
                 }
     
@@ -73,8 +72,8 @@
                 this.serialnumber = "";
                 this.phasestart = "";
                 this.platenumber = "";
-                this.phasename = "";
-                this.departmentaddress = "";
+                this.phase_name = "";
+                this.department_address = "";
     
             }
         }
