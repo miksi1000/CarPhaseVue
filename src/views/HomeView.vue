@@ -2,6 +2,7 @@
   <!-- <Department @fetch-cardepartment="fetchCarDepartment"/> -->
   <!-- <check/> -->
   <AddCar @add-car="addCar"  /> 
+  <div></div>
   <Cars @remove-car="removeCar"  :cars="cars" />
   
 </template>
