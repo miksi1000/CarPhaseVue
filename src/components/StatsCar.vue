@@ -1,37 +1,38 @@
-<template>
-    <div>
-        <div class="card">
-            <h5>Basic</h5>
-            <Chart type="line" :data="basicData" :options="basicOptions" />
-        </div>
 
-    </div>
-    <div></div>
+<template>
+    <div class="card">
+        <Chart type="bar" :data="chartData" :options="chartOptions" />
+    </div> 
 </template>
 
 <script>
 export default {
+    
     data() {
         return {
-            name: '',
-            Cars:[100],
-            basicData: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            nummer: 55,
+            methods: {
+            },
+            chartData: {
+                labels: ['Autohuset Vestergaard'],
                 datasets: [
                     {
-                        label: 'Price per day',
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        fill: true,
-                        borderColor: '#42A5F5',
-                        tension: .4,
-                        
-                    },
-                    
-                ]},
-        }
+                        label: 'Sales',
+                        data: [nummer],
+                        backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+                        borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            chartOptions: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
     }
-}
-            
+};
 </script>
-
-

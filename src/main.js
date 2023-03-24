@@ -7,8 +7,8 @@ import Button from "primevue/button";
 import Card from "primevue/card";
 import InputText from "primevue/inputtext"
 import Chart from 'primevue/chart'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Checkbox from 'primevue/checkbox';
+
 
 import 'primevue/resources/themes/saga-blue/theme.css'      //theme
 import 'primevue/resources/primevue.min.css'                 //core css
@@ -20,13 +20,13 @@ import '/node_modules/primeflex/primeflex.css'
 const app = createApp(App);
 app.use(PrimeVue,{ripple: true});
 app.use(router);
-app.use(VueAxios, axios);
 
 app.component('DropDown', DropDown);
 app.component("Button", Button);
 app.component("Card", Card);
 app.component("InputText", InputText);
 app.component('Chart', Chart);
+app.component('CheckBox', Checkbox);
 
 
 app.mount('#app');

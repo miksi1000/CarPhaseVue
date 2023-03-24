@@ -8,6 +8,7 @@
         <template #title>
           {{ car.name }}
           <div>{{ car.department_address }}</div>
+          <div>{{ car.phase_name }}</div>
         </template>
         <template #subtitle> registreringsnummer: {{ car.serialnumber }} </template>
         <!-- <template #content>

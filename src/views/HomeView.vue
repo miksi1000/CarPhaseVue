@@ -1,17 +1,20 @@
 <template>
-  <Department/>
+  <!-- <Department @fetch-cardepartment="fetchCarDepartment"/> -->
+  <!-- <check/> -->
   <AddCar @add-car="addCar"  /> 
   <Cars @remove-car="removeCar"  :cars="cars" />
+  
 </template>
 
 <script>
+import Check from "@/components/Check.vue"
 import Cars from "../components/Cars"
 import AddCar from "../components/AddCar"
 import Department from "../components/Department"
 
 export default {
   name: 'HomeView',
-  components: { Cars, AddCar, Department },
+  components: { Cars, AddCar, Department, Check },
   methods: {
     
 
@@ -73,6 +76,11 @@ export default {
     },
     async fetchCar(serialnumber){
       const res = await fetch(`http://127.0.0.1:8000/cars/${serialnumber}`)
+      const data = await res.json();
+      return data
+    },
+    async fetchCarDepartment(selectedcity){
+      const res = await fetch(`http://127.0.0.1:8000/cars/department/${selectedcity}/`)
       const data = await res.json();
       return data
     },
