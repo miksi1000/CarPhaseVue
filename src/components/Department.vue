@@ -29,6 +29,12 @@ data(){
                 var textcity = 'Herunder vises alle biler indenfor Hillerød afdeling';
 
             }
+        },
+        onchosencity(){
+            
+          //  console.log("clicked!", serialnumber);
+           this.$emit("fetch-cardepartment", selectedcity);
+        
         }
     }
 
