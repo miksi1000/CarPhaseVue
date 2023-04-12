@@ -30,3 +30,4 @@ app.component('CheckBox', Checkbox);
 
 
 app.mount('#app');
+
