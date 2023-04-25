@@ -7,7 +7,7 @@
 
 <script>
 
-import StatsCar from '@/components/StatsCar.vue';
+
 import Car from '@/components/Car.vue';
 import bar from '@/components/bar.vue';
 export default{ data(){
@@ -16,7 +16,7 @@ export default{ data(){
   }
 
 },
-  components: {StatsCar, Car, bar},
+  components: {Car, bar},
 
   methods:{
 

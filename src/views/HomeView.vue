@@ -8,19 +8,18 @@
 </template>
 
 <script>
-import Check from "@/components/Check.vue"
 import Cars from "../components/Cars"
 import AddCar from "../components/AddCar"
 import Department from "../components/Department"
 
 export default {
   name: 'HomeView',
-  components: { Cars, AddCar, Department, Check },
+  components: { Cars, AddCar, Department},
   methods: {
     
 
     async addCar(car) {
-      const res = await fetch("http://127.0.0.1:8000/cars/", {
+      const res = await fetch(`http://127.0.0.1:8000/cars/`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -70,11 +69,16 @@ export default {
     //     car.id === id ? { ...car, isFavorite: data.isFavorite } : car
     //   );
     // },
-    async fetchCars(){
-      const res = await fetch("http://127.0.0.1:8000/cars/")
-      const data = await res.json();
-      return data
-    },
+    async fetchCars(page){
+      try {
+        
+    const res = await fetch(`http://127.0.0.1:8000/cars/?page=${page}`);
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.log(error);
+  }
+},
     async fetchCar(serialnumber){
       const res = await fetch(`http://127.0.0.1:8000/cars/${serialnumber}`)
       const data = await res.json();
@@ -93,7 +97,11 @@ export default {
     };
   },
   async created() {
-    this.cars = await this.fetchCars();
+    
+
+    const cars = await this.fetchCars(1);
+    
+  this.cars = cars;
 
   }
 }

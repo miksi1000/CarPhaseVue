@@ -27,6 +27,13 @@
             class="p-button-danger"
             style="margin-right: 4em"
           />
+          <Button
+    @click="onEdit(car.serialnumber)"
+    icon="pi pi-pencil"
+    label="Edit"
+    class="p-button-secondary"
+    style="margin-right: 1em"
+  />
         </template>
       </Card>
     </div>
@@ -34,17 +41,23 @@
 
 <script>
 export default {
-    props: {
-        car: Object,
-    },
-    methods: {
-        onRemove(serialnumber){
-          //  console.log("clicked!", serialnumber);
-           this.$emit("remove-car", serialnumber);
-        }
-
+  props: {
+    cars: [],
+    car: Object,
+  },
+  data() {
+    return {
+      isEditing: false // add isEditing as a data property with a default value of false
     }
-
+  },
+  methods: {
+    onRemove(serialnumber){
+      this.$emit("remove-car", serialnumber);
+    },
+    onEdit(serialnumber){
+      this.isEditing = true; // update isEditing property to true
+    },
+  }
 }
 </script>
 
@@ -53,4 +66,10 @@ img {
     height: 250px;
     object-fit: cover;
 }
+
+.red-card {
+  border: 2px solid red;
+}
+
+
 </style>
