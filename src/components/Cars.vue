@@ -2,7 +2,7 @@
 
 
     <div class="grid">
-      <div class="p-col-12 p-md-6 p-lg-3" v-for="car in cars" :key="car.serialnumber" style="margin-left: 10px">
+      <div class="p-col-12 p-md-6 p-lg-3" v-for="car in cars" :key="car.serialnumber" style="margin-left: 10px; padding: 13px;" >
         
         <!-- <h3>{{ car.name }}</h3> -->
         <Car
