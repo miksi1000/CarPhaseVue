@@ -19,7 +19,7 @@ export default {
     
 
     async addCar(car) {
-      const res = await fetch(`http://127.0.0.1:8000/cars/`, {
+      const res = await fetch(`https://carphase-api.azurewebsites.net/cars/`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -37,7 +37,7 @@ export default {
     async removeCar(serialnumber) {
       if (confirm("Are you sure you want to remove this Car?")) {
         const res = await fetch(
-          `http://127.0.0.1:8000/cars/${serialnumber}/`,
+          `https://carphase-api.azurewebsites.net/cars/${serialnumber}/`,
           {
             method: "DELETE",
           }
@@ -72,7 +72,7 @@ export default {
     async fetchCars(page){
       try {
         
-    const res = await fetch(`http://127.0.0.1:8000/cars/?page=${page}`);
+    const res = await fetch(`https://carphase-api.azurewebsites.net/cars/?page=${page}`);
     const data = await res.json();
     return data.results;
   } catch (error) {

@@ -25,7 +25,7 @@ export default {
   },
   async mounted() {
     try {
-      const response = await fetch('http://127.0.0.1:8000/cars/')
+      const response = await fetch('https://carphase-api.azurewebsites.net/cars/')
       const data = await response.json()
 
       // Get the count of cars
